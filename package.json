@@ -1,0 +1,16 @@
+{
+  "name": "rp-studio-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portofolio CMS-ready: situs statis + Vercel Functions + Vercel Blob",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.8.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

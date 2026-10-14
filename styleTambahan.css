@@ -1,0 +1,77 @@
+/* ---------- Situs publik: daftar profil ---------- */
+.profile-list { display: grid; gap: clamp(3rem, 6vw, 5.5rem); }
+.profile-item + .profile-item {
+  padding-top: clamp(3rem, 6vw, 5.5rem);
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Admin: kartu item (profil) ---------- */
+.adm-items { display: grid; gap: 1.5rem; margin-bottom: 1.5rem; }
+.adm-item {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+.adm-item .a-field:last-child { margin-bottom: 0; }
+.adm-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.adm-item-title {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.adm-item-tools { display: flex; gap: 0.5rem; }
+.adm-item-tools .adm-x { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.45rem 0.8rem; }
+.adm-item-tools .adm-btn:disabled { opacity: 0.3; cursor: default; }
+.adm-item-tools .adm-btn:disabled:hover { background: none; color: var(--fg); border-color: var(--line); }
+
+.adm-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem; margin-top: 0.5rem; }
+.adm-card > .adm-list-head { margin-bottom: 0.5rem; }
+#addProfile:disabled, #addContact:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ---------- Admin: baris kontak ---------- */
+.adm-contacts { display: grid; gap: 1rem; margin-bottom: 1rem; }
+.adm-contacts .adm-item { padding: 1rem 1.25rem; }
+.adm-contact-grid {
+  display: grid;
+  grid-template-columns: 8rem 1fr auto;
+  gap: 0.75rem 1rem;
+  align-items: end;
+}
+.adm-contact-grid .a-input { font-size: 0.95rem; }
+.adm-contact-grid .c-value { grid-column: 1 / -1; resize: vertical; min-height: 2.4rem; }
+@media (max-width: 575.98px) {
+  .adm-contact-grid { grid-template-columns: 1fr auto; }
+  .adm-contact-grid .c-type { grid-column: 1 / -1; }
+}
+
+/* ---------- Foto profil (situs publik) ---------- */
+.profile-photo {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  margin-bottom: 1.75rem;
+  border: 1px solid var(--line);
+}
+
+/* ---------- Foto profil (admin) ---------- */
+.adm-avatar { display: flex; align-items: flex-start; gap: 1.25rem; flex-wrap: wrap; }
+.adm-avatar img {
+  display: block;
+  width: 7rem;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+.adm-avatar img[hidden] { display: none; }
+.adm-avatar-actions { display: grid; gap: 0.75rem; justify-items: start; min-width: 0; flex: 1 1 14rem; }
