@@ -15,13 +15,6 @@ const META_OPTS = {
 
 const send = (data, status = 200, cache = 'no-store') =>
   Response.json(data, { status, headers: { 'Cache-Control': cache } });
-
-/* ---------- URUTAN PROYEK ----------
- * 1) proyek bertanda pinned (maks. 1) selalu nomor 01
- * 2) sisanya urut dari yang PERTAMA diunggah → terbaru (proyek baru masuk paling akhir)
- * 3) id sebagai pemecah seri agar urutan selalu stabil
- * Setara SQL:  ORDER BY pinned DESC, created_at ASC, id ASC
- */
 const byOrder = (a, b) =>
   (b.pinned === true) - (a.pinned === true) ||
   String(a.uploadedAt).localeCompare(String(b.uploadedAt)) ||
@@ -74,7 +67,7 @@ export async function GET(request) {
           try {
             return await readMeta(blob);
           } catch {
-            return null; // satu metadata rusak tidak menggagalkan semuanya
+            return null;
           }
         })
       )
@@ -95,7 +88,6 @@ export async function GET(request) {
   }
 }
 
-/** Pastikan hanya satu proyek yang pinned. */
 async function unpinOthers(exceptId) {
   const others = (await listAll('portfolio/')).filter(
     (b) => b.pathname.endsWith('.json') && b.pathname !== `portfolio/${exceptId}.json`
